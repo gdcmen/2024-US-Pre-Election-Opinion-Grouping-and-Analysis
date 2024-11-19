@@ -1,7 +1,13 @@
 # 2024-US-Pre-Election-Opinion-Grouping-and-Analysis
 
 ## Project Overview
-This project analyzes social media and survey data to group public opinions about the 2024 US elections. Using unsupervised machine learning techniques, we developed a model combining Topic Modeling (LDA) and KMeans Clustering to categorize different opinion groups. Additionally, Sentiment Analysis was integrated to gauge public sentiment on key election topics, providing insights into common themes and stances.
+. This project analyzes social media and survey data to group public opinions about the 2024 US elections. Using unsupervised machine learning techniques, we developed a model combining Topic Modeling (LDA) and KMeans Clustering to categorize different opinion groups. Additionally, Sentiment Analysis was integrated to gauge public sentiment on key election topics, providing insights into common themes and stances.
+- For this project, we used the Silhouette Score and the Davies-Bouldin Index measurements:
+-   `Silhouette Score`: 0.81
+-   `Davies-Bouldin Index`: 0.21
+
+![image](https://github.com/user-attachments/assets/0438f8bc-65dc-4214-b2ed-fd446af0208e)
+
 
 ## Project Goals
 Identify Key Themes in public discourse related to the 2024 elections.
@@ -46,3 +52,5 @@ Topic Distributions: Topic weights derived from LDA modeling.
 ## Results
   - Identified Clusters: Key opinion groups were identified, revealing diverse perspectives on the election.
   - Sentiment Insights: Sentiment analysis highlighted varying attitudes towards specific topics within each cluster.
+
+![image](https://github.com/user-attachments/assets/ceca256e-f5f6-4f8d-9b16-65909b182756)

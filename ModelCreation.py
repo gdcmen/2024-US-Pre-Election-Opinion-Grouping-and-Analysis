@@ -231,3 +231,18 @@ plt.gca().add_artist(legend1)
 plt.legend(['Centers'], loc='upper right')
 
 plt.show()
+
+
+# Code to save and load the model
+
+from joblib import dump, load
+
+# Save the best KMeans model to an .h5 file
+dump(best_kmeans_model, '/content/drive/MyDrive/Colab Notebooks/Social Network Mining/Preprocessing/best_kmeans_model.h5')
+
+print("KMeans model saved as best_kmeans_model.h5")
+
+# Load the KMeans model
+best_kmeans_model = load('/content/drive/MyDrive/Colab Notebooks/Social Network Mining/Preprocessing/best_kmeans_model.h5')
+
+print("KMeans model loaded successfully")

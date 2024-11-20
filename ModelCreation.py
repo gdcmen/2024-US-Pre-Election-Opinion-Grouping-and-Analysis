@@ -238,11 +238,11 @@ plt.show()
 from joblib import dump, load
 
 # Save the best KMeans model to an .h5 file
-dump(best_kmeans_model, '/content/drive/MyDrive/Colab Notebooks/Social Network Mining/Preprocessing/best_kmeans_model.h5')
+dump(best_kmeans_model, '/content/drive/MyDrive/Colab Notebooks/Social Network Mining/ModelCreation/best_kmeans_model.h5')
 
 print("KMeans model saved as best_kmeans_model.h5")
 
 # Load the KMeans model
-best_kmeans_model = load('/content/drive/MyDrive/Colab Notebooks/Social Network Mining/Preprocessing/best_kmeans_model.h5')
+best_kmeans_model = load('/content/drive/MyDrive/Colab Notebooks/Social Network Mining/ModelCreation/best_kmeans_model.h5')
 
 print("KMeans model loaded successfully")

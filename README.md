@@ -6,7 +6,7 @@
 -   `Silhouette Score`: 0.81
 -   `Davies-Bouldin Index`: 0.21
 
-![image](https://github.com/user-attachments/assets/0438f8bc-65dc-4214-b2ed-fd446af0208e)
+![image](https://github.com/user-attachments/assets/086defec-2b08-4347-9443-4387cf0adb8b)
 
 
 ## Project Goals

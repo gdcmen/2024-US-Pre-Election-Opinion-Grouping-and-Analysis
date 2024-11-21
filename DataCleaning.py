@@ -4,11 +4,6 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import csv
 
 # Set up Reddit API credentials
-reddit = praw.Reddit(
-    client_id='9d3zC5Ldxu0dr_2oBo-yNw',  # Your Client ID
-    client_secret='HfLXQseIBMvb39pdUnHvjT6rEoyuFw',  # Your Client Secret
-    user_agent='ElectionSentimentScript/1.0',  # Your User Agent
-)
 
 reddit_file = "/content/drive/MyDrive/Colab Notebooks/Social Network Mining/reddit_data.csv"
 
@@ -137,39 +132,54 @@ for row in df.itertuples(index=True, name='Pandas'):
     print(f"Index: {row.Index}, Title: {row.Title}, Selftext: {row.Selftext}, Vader Sentiment: {row.Sentiment}")
     break
 
-"""# NLTK Usage example"""
 
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import pandas as pd
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+# Ensure NLTK resources are downloaded
+nltk.download('stopwords')
+nltk.download('punkt_tab')
+nltk.download('wordnet')
 nltk.download('vader_lexicon')
 
-# Initialize VADER SentimentIntensityAnalyzer
-sid = SentimentIntensityAnalyzer()
 
-# Example data
-data = {
-    'text': [
-        'I love this product! It’s amazing.',
-        'This was a horrible experience.',
-        'I feel okay about this service.',
-        'Nothing special, just average.'
-    ]
-}
-df = pd.DataFrame(data)
+def clean_text(text):
+    # Step 1: Lowercase
+    text = text.lower()
 
-# Apply sentiment analysis to each row
-df['sentiment_scores'] = df['text'].apply(lambda text: sid.polarity_scores(text))
-df['compound'] = df['sentiment_scores'].apply(lambda score_dict: score_dict['compound'])
+    # Step 2: Remove URLs
+    text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.MULTILINE)
 
-print(df[['text', 'compound']])
+    # Step 3: Remove special characters and numbers
+    text = re.sub(r'[^a-z\s]', '', text)
 
-"""# REAL ANALYSIS"""
+    # Step 4: Tokenization
+    words = nltk.word_tokenize(text)
+
+    # Step 5: Remove stopwords
+    stop_words = set(stopwords.words('english'))
+    words = [word for word in words if word not in stop_words]
+
+    # Step 6: Lemmatization
+    lemmatizer = WordNetLemmatizer()
+    words = [lemmatizer.lemmatize(word) for word in words]
+
+    # Step 7: Join words back into a cleaned string
+    cleaned_text = ' '.join(words)
+
+    return cleaned_text
 
 sentiment_analyzer = SentimentIntensityAnalyzer()
 
 # Combine 'Title' and 'Selftext' into a new column 'processed_text'
 df['processed_text'] = df['Title'] + ' ' + df['Selftext']
+# Drop rows with NaN or non-string values in 'processed_text'
+df = df.dropna(subset=['processed_text'])
+df['processed_text'] = df['processed_text'].astype(str)  # Convert all to strings
+df['cleaned_text'] = df['processed_text'].apply(clean_text)
 
 # Initialize empty lists to store sentiment scores
 nltk_sentiments = []

@@ -1,18 +1,28 @@
 # 2024-US-Pre-Election-Opinion-Grouping-and-Analysis
 
 ## Project Overview
-. This project analyzes social media and survey data to group public opinions about the 2024 US elections. Using unsupervised machine learning techniques, we developed a model combining Topic Modeling (LDA) and KMeans Clustering to categorize different opinion groups. Additionally, Sentiment Analysis was integrated to gauge public sentiment on key election topics, providing insights into common themes and stances.
+This project analyzes public opinions about the 2024 US elections using unsupervised machine learning on social media data. We developed a hybrid model combining Topic Modeling (LDA) and KMeans Clustering to identify distinct opinion groups. Sentiment Analysis was also applied to measure public sentiment on key topics, revealing insights into common themes and stances.
 - For this project, we used the Silhouette Score and the Davies-Bouldin Index measurements:
 -   `Silhouette Score`: 0.81
 -   `Davies-Bouldin Index`: 0.21
 
-![image](https://github.com/user-attachments/assets/086defec-2b08-4347-9443-4387cf0adb8b)
-
-
 ## Project Goals
-Identify Key Themes in public discourse related to the 2024 elections.
-Group Opinions into clusters to uncover distinct viewpoints.
-Analyze Sentiment within each opinion group to understand public attitudes.
+1. Identify Key Themes in public discourse about the 2024 elections.
+2. Group Public Opinions into distinct clusters to uncover diverse viewpoints.
+3. Analyze Sentiments within clusters to evaluate public attitudes on critical election topics.
+
+## Key Insights
+### Impact of Clusters and Topics
+We experimented with various numbers of clusters and topics:
+
+1. Fewer Clusters: Higher Silhouette Scores, leading to more distinct groupings but broader themes.
+2. Three Clusters: Slightly lower Silhouette Scores but provided deeper insights into specific conversations.
+3. Larger Numbers of Clusters: Enabled finer segmentation of opinions but with diminishing returns on interpretability.
+
+The following graph illustrates the trade-off between the number of clusters and Silhouette Score across different numbers of topics:
+
+![image](https://github.com/user-attachments/assets/ceca256e-f5f6-4f8d-9b16-65909b182756)
+
 
 ## Skills and Tools
 Python: Data manipulation, modeling, and analysis.
@@ -53,4 +63,3 @@ Topic Distributions: Topic weights derived from LDA modeling.
   - Identified Clusters: Key opinion groups were identified, revealing diverse perspectives on the election.
   - Sentiment Insights: Sentiment analysis highlighted varying attitudes towards specific topics within each cluster.
 
-![image](https://github.com/user-attachments/assets/ceca256e-f5f6-4f8d-9b16-65909b182756)
